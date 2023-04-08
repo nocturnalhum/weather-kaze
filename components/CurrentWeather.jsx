@@ -26,7 +26,7 @@ export default function CurrentWeather({ meteoData }) {
   }
 
   return (
-    <div className='relative w-full max-w-3xl'>
+    <div className='relative max-w-3xl'>
       <div className='w-full h-full p-2'>
         <HumidityPressure
           humidity={hourly.relativehumidity_2m[currentHour]}

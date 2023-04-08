@@ -28,20 +28,20 @@ export default function City({ meteoData, name, country }) {
       </div>
       {/* ============================================================================
           ===============<<< Weather Content >>>======================================
-          ============================================================================ */}
-      <div className='relative max-w-3xl w-full h-96 m-auto  perspective'>
+        ============================================================================ */}
+      <div className='m-auto w-full max-w-3xl'>
         <div
-          className={`relative w-full h-full backface-hidden preserve-3d transition-all duration-500 ${
+          className={`relative w-full h-96 preserve-3d duration-500 backface-hidden ${
             isFlipped ? 'rotate-y-180' : ''
           }`}
         >
           <div
-            className={`absolute w-full h-full backface-hidden bg-gray-400/10 backdrop-blur-sm text-center border-b-[1px] border-[2px]   border-r-gray-400/80 border-b-gray-500 border-t-gray-500/50 border-l-gray-700/50 shadow-inner shadow-gray-400/70 rounded-3xl`}
+            className={`absolute -z-10 w-full h-full backface-hidden bg-gray-400/50 `}
           >
             <CurrentWeather meteoData={meteoData} />
           </div>
           <div
-            className={`absolute w-full h-full backface-hidden rotate-y-180 bg-gray-400/10 backdrop-blur-sm  text-center border-b-[1px] border-[2px] border-r-gray-400/80 border-b-gray-500 border-t-gray-500/50 border-l-gray-700/50 shadow-inner shadow-gray-400/70 rounded-3xl`}
+            className={`absolute w-full h-full bg-gray-400/50 backface-hidden rotate-y-180`}
           >
             <ForecastWeather meteoData={meteoData} />
           </div>
@@ -79,3 +79,5 @@ export async function getServerSideProps({ params }) {
     props: { meteoData, name, country },
   };
 }
+
+// `absolute -z-10 w-full h-full backface-hidden bg-gray-400/10 backdrop-blur-sm border-b-[1px] border-[2px]   border-r-gray-400/80 border-b-gray-500 border-t-gray-500/50 border-l-gray-700/50 shadow-inner shadow-gray-400/70 rounded-3xl`
