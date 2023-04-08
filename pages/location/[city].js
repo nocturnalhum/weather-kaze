@@ -31,21 +31,17 @@ export default function City({ meteoData, name, country }) {
           ============================================================================ */}
       <div className='relative max-w-3xl w-full h-96 m-auto perspective'>
         <div
-          className={`absolute w-full h-full backdrop-blur-sm preserve-3d transition-all duration-500 ${
-            isFlipped ? 'rotate-y-180 backface-show' : ''
+          className={`absolute w-full h-full backface-hidden preserve-3d transition-all duration-500 ${
+            isFlipped ? 'rotate-y-180' : ''
           }`}
         >
           <div
-            className={`absolute w-full h-full backface-hidden bg-gray-400/10 backdrop-blur-sm text-center border-b-[1px] border-[2px]   border-r-gray-400/80 border-b-gray-500 border-t-gray-500/50 border-l-gray-700/50 shadow-inner shadow-gray-400/70 rounded-3xl ${
-              isFlipped ? 'opacity-0 duration-500' : ''
-            }`}
+            className={`absolute w-full h-full backface-hidden bg-gray-400/10 backdrop-blur-sm text-center border-b-[1px] border-[2px]   border-r-gray-400/80 border-b-gray-500 border-t-gray-500/50 border-l-gray-700/50 shadow-inner shadow-gray-400/70 rounded-3xl`}
           >
             <CurrentWeather meteoData={meteoData} />
           </div>
           <div
-            className={`absolute w-full h-full rotate-y-180 bg-gray-400/10 backdrop-blur-sm  text-center border-b-[1px] border-[2px] border-r-gray-400/80 border-b-gray-500 border-t-gray-500/50 border-l-gray-700/50 shadow-inner shadow-gray-400/70 rounded-3xl ${
-              isFlipped ? 'backface-show' : 'backface-hidden'
-            }`}
+            className={`absolute w-full h-full backface-hidden rotate-y-180 bg-gray-400/10 backdrop-blur-sm  text-center border-b-[1px] border-[2px] border-r-gray-400/80 border-b-gray-500 border-t-gray-500/50 border-l-gray-700/50 shadow-inner shadow-gray-400/70 rounded-3xl`}
           >
             <ForecastWeather meteoData={meteoData} />
           </div>
