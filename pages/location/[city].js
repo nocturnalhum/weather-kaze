@@ -29,9 +29,9 @@ export default function City({ meteoData, name, country }) {
       {/* ============================================================================
           ===============<<< Weather Content >>>======================================
           ============================================================================ */}
-      <div className='relative max-w-3xl w-full h-96 m-auto perspective'>
+      <div className='relative max-w-3xl w-full h-96 m-auto  perspective'>
         <div
-          className={`absolute w-full h-full backface-hidden preserve-3d transition-all duration-500 ${
+          className={`relative w-full h-full backface-hidden preserve-3d transition-all duration-500 ${
             isFlipped ? 'rotate-y-180' : ''
           }`}
         >
