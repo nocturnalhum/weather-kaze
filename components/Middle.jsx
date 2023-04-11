@@ -23,7 +23,7 @@ export default function Middle({
     currentWeather.time >= sunriseToday && currentWeather.time <= sunsetToday;
 
   return (
-    <div className='flex flex-col rounded-xl bg-gray-700/50 m-2 p-3 capitalize shadow-2xl text-gray-50'>
+    <div className='m-2 flex flex-col rounded-xl bg-gray-700/50 p-3 capitalize text-gray-50 shadow-2xl backdrop-blur-sm'>
       {/* ============================================================================
           ===============<<< Currently Heading >>>====================================
           ============================================================================ */}
@@ -33,7 +33,7 @@ export default function Middle({
           ===============<<< Current Temperature >>>===================================
           ============================================================================ */}
       <div className='flex space-x-5'>
-        <div className='flex flex-col items-center w-24'>
+        <div className='flex w-24 flex-col items-center'>
           <div className='flex'>
             <div className='pr-1 text-5xl font-semibold'>
               {Math.round(currentWeather.temperature)}
@@ -65,7 +65,7 @@ export default function Middle({
       {/* ============================================================================
           ===============<<< Sunrise & Sunset Time >>>================================
           ============================================================================ */}
-      <div className='flex bg-gradient-to-br from-amber-300/70 to-orange-800 px-2 rounded-lg justify-between mt-3 opacity-90'>
+      <div className='mt-3 flex justify-between rounded-lg bg-gradient-to-br from-amber-300/70 to-orange-800 px-2 opacity-90'>
         <div className='flex flex-col font-semibold'>
           <div className='flex items-center'>
             Sunrise <WiHorizonAlt size={35} />

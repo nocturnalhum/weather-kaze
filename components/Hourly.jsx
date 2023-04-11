@@ -45,7 +45,7 @@ export default function Hourly({ hourlyData, sunrise, sunset }) {
 
     return (
       <li
-        className={`mx-1 flex h-auto flex-col items-center justify-center gap-1 rounded-lg py-5 text-white ${
+        className={`mx-1 flex h-auto flex-col items-center justify-center gap-1 rounded-lg py-5 text-white backdrop-blur-sm ${
           isDayTime ? 'bg-blue-500/50' : 'bg-blue-300/20'
         } capitalize shadow-xl`}
       >
