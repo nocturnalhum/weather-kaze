@@ -1,5 +1,7 @@
 import React from 'react';
 import HumidityPressure from './HumidityPressure';
+import Middle from './Middle';
+import Hourly from './Hourly';
 
 export default function CurrentWeather({ meteoData }) {
   const { current_weather, daily, hourly, timezone } = meteoData;
@@ -36,6 +38,14 @@ export default function CurrentWeather({ meteoData }) {
           winddirection={winddirection}
         />
       </div>
+      <Middle
+        currentWeather={current_weather}
+        timezone={timezone}
+        feelsLike={hourlyData[0].feels_like}
+        sunrise={sunrise}
+        sunset={sunset}
+      />
+      <Hourly hourlyData={hourlyData} sunrise={sunrise} sunset={sunset} />
     </div>
   );
 }

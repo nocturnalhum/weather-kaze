@@ -29,19 +29,19 @@ export default function City({ meteoData, name, country }) {
       {/* ============================================================================
           ===============<<< Weather Content >>>======================================
         ============================================================================ */}
-      <div className='m-auto w-full max-w-3xl'>
+      <div className='m-auto w-full max-w-3xl perspective'>
         <div
-          className={`relative w-full h-96 preserve-3d duration-500 backface-hidden ${
+          className={`relative w-full h-96 preserve-3d duration-500 rounded-2xl backface-hidden ${
             isFlipped ? 'rotate-y-180' : ''
           }`}
         >
           <div
-            className={`absolute -z-10 w-full h-full backface-hidden bg-gray-400/50 `}
+            className={`absolute bg-gray-500/30 -z-10 w-full h-full backface-hidden border-b-[1px] border-[2px]   border-r-gray-400/80 border-b-gray-500 border-t-gray-500/50 border-l-gray-700/50 rounded-2xl`}
           >
             <CurrentWeather meteoData={meteoData} />
           </div>
           <div
-            className={`absolute w-full h-full bg-gray-400/50 backface-hidden rotate-y-180`}
+            className={`absolute bg-gray-500/30 w-full h-full  backface-hidden rotate-y-180 border-b-[1px] border-[2px]  border-r-gray-400/80 border-b-gray-500 border-t-gray-500/50 border-l-gray-700/50 rounded-2xl`}
           >
             <ForecastWeather meteoData={meteoData} />
           </div>
