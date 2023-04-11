@@ -11,6 +11,7 @@ import moment from 'moment';
 
 export default function Middle({
   currentWeather,
+  uvIndex,
   timezone,
   feelsLike,
   sunrise,
@@ -18,9 +19,6 @@ export default function Middle({
 }) {
   const sunriseToday = sunrise[0];
   const sunsetToday = sunset[0];
-
-  const isDayTime =
-    currentWeather.time >= sunriseToday && currentWeather.time <= sunsetToday;
 
   return (
     <div className='m-2 flex flex-col rounded-xl bg-gray-700/50 p-3 capitalize text-gray-50 shadow-2xl backdrop-blur-sm'>
@@ -49,16 +47,19 @@ export default function Middle({
         <div className='flex items-center'>
           <Image
             src={
-              isDayTime
+              currentWeather.is_day
                 ? weatherIconMappingDay[currentWeather.weathercode]
                 : weatherIconMappingNight[currentWeather.weathercode]
             }
             alt={weatherLabelMapping[currentWeather.weathercode]}
-            width={75}
-            height={75}
+            width={85}
+            height={85}
           />
-          <div className='text-xl'>
-            {weatherLabelMapping[currentWeather.weathercode]}
+          <div className='ml-3 flex flex-col'>
+            <div className='text-xl font-semibold'>
+              {weatherLabelMapping[currentWeather.weathercode]}
+            </div>
+            <div>UV Index: {uvIndex}</div>
           </div>
         </div>
       </div>

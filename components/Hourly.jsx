@@ -39,9 +39,7 @@ export default function Hourly({ hourlyData, sunrise, sunset }) {
 
   const Column = (index) => {
     const time = hourlyData[index].time;
-    const isDayTime =
-      time >= sunrise[Math.floor(index / 24)] &&
-      time <= sunset[Math.floor(index / 24)];
+    const isDayTime = hourlyData[index].isDay;
 
     return (
       <li
@@ -77,7 +75,7 @@ export default function Hourly({ hourlyData, sunrise, sunset }) {
             <span className='text-xs font-extralight'>feels like</span>
           </div>
         </span>
-        <span className='font-semibold'>
+        <span className='text-sm font-semibold'>
           {weatherLabelMapping[hourlyData[index].weathercode]}
         </span>
         <div className='flex text-sm'>

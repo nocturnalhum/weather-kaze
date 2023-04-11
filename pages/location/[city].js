@@ -3,7 +3,7 @@ import Layout from '@/components/Layout';
 import CurrentWeather from '@/components/CurrentWeather';
 import ForecastWeather from '@/components/ForecastWeather';
 
-const METEO_QUERY = `hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,surface_pressure,cloudcover,visibility,windspeed_10m,winddirection_10m,windgusts_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,precipitation_sum,precipitation_probability_max,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant&current_weather=true&timezone=auto`;
+const METEO_QUERY = `hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,surface_pressure,cloudcover,visibility,windspeed_10m,winddirection_10m,windgusts_10m,uv_index,is_day&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,precipitation_sum,precipitation_hours,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant&current_weather=true&timezone=auto`;
 
 export default function City({ meteoData, name, country }) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -67,7 +67,6 @@ export async function getServerSideProps({ params }) {
   const res = await fetch(
     `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&${METEO_QUERY}`
   );
-
   const meteoData = await res.json();
 
   if (!meteoData) {
@@ -79,5 +78,3 @@ export async function getServerSideProps({ params }) {
     props: { meteoData, name, country },
   };
 }
-
-// `absolute -z-10 w-full h-full backface-hidden bg-gray-400/10 backdrop-blur-sm border-b-[1px] border-[2px]   border-r-gray-400/80 border-b-gray-500 border-t-gray-500/50 border-l-gray-700/50 shadow-inner shadow-gray-400/70 rounded-3xl`

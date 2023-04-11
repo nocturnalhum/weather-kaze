@@ -4,8 +4,9 @@ import Middle from './Middle';
 import Hourly from './Hourly';
 
 export default function CurrentWeather({ meteoData }) {
+  console.log('meteoData', meteoData);
   const { current_weather, daily, hourly, timezone } = meteoData;
-  const { temperature, time, weathercode, winddirection, windspeed } =
+  const { is_day, temperature, time, weathercode, winddirection, windspeed } =
     current_weather;
   const { sunrise, sunset } = daily;
 
@@ -18,6 +19,8 @@ export default function CurrentWeather({ meteoData }) {
 
   for (let i = currentHour; i < hourly.time.length; i++) {
     hourlyData.push({
+      isDay: hourly?.is_day[i],
+      cloudCover: hourly?.cloudcover[i],
       time: hourly?.time[i],
       temperature: Math.round(hourly?.temperature_2m[i]),
       feels_like: Math.round(hourly?.apparent_temperature[i]),
@@ -29,7 +32,7 @@ export default function CurrentWeather({ meteoData }) {
   }
 
   return (
-    <div className='relative max-w-3xl rounded-2xl border-[2px] border-b-[1px] border-b-gray-500   border-l-gray-700/50 border-r-gray-400/80 border-t-gray-500/50'>
+    <div className='relative max-w-3xl rounded-2xl border-[2px] border-b-[1px] border-b-gray-500   border-l-gray-700/50 border-r-gray-400/80 border-t-gray-100/50'>
       <div className='h-full w-full p-2'>
         <HumidityPressure
           humidity={hourly.relativehumidity_2m[currentHour]}
@@ -43,6 +46,7 @@ export default function CurrentWeather({ meteoData }) {
         currentWeather={current_weather}
         timezone={timezone}
         feelsLike={hourlyData[0].feels_like}
+        uvIndex={hourly.uv_index[currentHour]}
         sunrise={sunrise}
         sunset={sunset}
       />

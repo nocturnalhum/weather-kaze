@@ -115,6 +115,7 @@ export default function Search() {
       !resultContainer.current
         ? setNotFound(true)
         : router.push(resultContainer.current.firstChild.getAttribute('href'));
+      setQuery('');
     }
     console.log(
       'nextIndexCount',
@@ -137,17 +138,17 @@ export default function Search() {
       {/* ==========================================================================
           ===============<<< Search Query >>>=======================================
           ========================================================================== */}
-      <div className='flex justify-center w-full p-3'>
-        <div className='relative max-w-2xl w-full'>
+      <div className='flex w-full justify-center p-3'>
+        <div className='relative w-full max-w-2xl'>
           <div className='relative z-50' onKeyDown={handleKeyDown}>
             <input
               type='text'
               value={query}
               placeholder='Search for a location...'
               onChange={onChange}
-              className='rounded-lg border-gray-300 bg-transparent border px-4 py-2 text-gray-50 outline-none text-xl placeholder-gray-300 w-full max-w-2xl pr-12'
+              className='w-full max-w-2xl rounded-lg border border-gray-300 bg-transparent px-4 py-2 pr-12 text-xl text-gray-50 placeholder-gray-300 outline-none'
             />
-            <button className='absolute text-white top-3.5 right-3.5'>
+            <button className='absolute right-3.5 top-3.5 text-white'>
               {!query ? (
                 <BsSearch size={20} />
               ) : (
@@ -160,7 +161,7 @@ export default function Search() {
             {queryList.length && !notFound ? (
               <div
                 onClick={handleClick}
-                className='z-0 my-1 py-2 px-6 flex items-center rounded-md border bg-gray-500/40 pl-7 text-lg font-medium  text-orange-400 backdrop-blur-sm cursor-pointer'
+                className='z-0 my-1 flex cursor-pointer items-center rounded-md border bg-gray-500/40 px-6 py-2 pl-7 text-lg  font-medium text-orange-400 backdrop-blur-sm'
               >
                 {selectLocation}
               </div>
@@ -208,7 +209,7 @@ export default function Search() {
                 ===============<<< Display Location Not Found >>>====================
                 ===================================================================== */}
             {notFound && (
-              <div className='rounded-md text-lg bg-gray-600/30 mt-1 py-2 px-6 text-orange-400 backdrop-blur-sm border border-gray-50'>
+              <div className='mt-1 rounded-md border border-gray-50 bg-gray-600/30 px-6 py-2 text-lg text-orange-400 backdrop-blur-sm'>
                 Location not found
               </div>
             )}
