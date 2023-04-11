@@ -27,7 +27,7 @@ export default function Middle({
       {/* ============================================================================
           ===============<<< Currently Heading >>>====================================
           ============================================================================ */}
-      <div className='text-2xl font-light tracking-wide'>currently</div>
+      <h1 className='text-2xl font-light tracking-wide'>currently</h1>
 
       {/* ============================================================================
           ===============<<< Current Temperature >>>===================================
@@ -44,7 +44,7 @@ export default function Middle({
           <div className='text-sm font-light'>feels like</div>
         </div>
         {/* ============================================================================
-            ===============<<< Sunrise Sunset >>>=======================================
+            ===============<<< Weather Description >>>==================================
             ============================================================================ */}
         <div className='flex items-center'>
           <Image
@@ -63,9 +63,9 @@ export default function Middle({
         </div>
       </div>
       {/* ============================================================================
-          ===============<<< Icon & Description >>>===================================
+          ===============<<< Sunrise & Sunset Time >>>================================
           ============================================================================ */}
-      <div className='flex bg-gradient-to-br from-amber-300/70 to-orange-800 px-2 rounded-lg justify-between mt-3'>
+      <div className='flex bg-gradient-to-br from-amber-300/70 to-orange-800 px-2 rounded-lg justify-between mt-3 opacity-90'>
         <div className='flex flex-col font-semibold'>
           <div className='flex items-center'>
             Sunrise <WiHorizonAlt size={35} />

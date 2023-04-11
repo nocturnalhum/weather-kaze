@@ -22,14 +22,15 @@ export default function CurrentWeather({ meteoData }) {
       temperature: Math.round(hourly?.temperature_2m[i]),
       feels_like: Math.round(hourly?.apparent_temperature[i]),
       precipitation: hourly?.precipitation[i],
+      precipitation_probability: hourly?.precipitation_probability[i],
       weathercode: hourly?.weathercode[i],
       windspeed: hourly?.windspeed_10m[i],
     });
   }
 
   return (
-    <div className='relative max-w-3xl'>
-      <div className='w-full h-full p-2'>
+    <div className='relative max-w-3xl rounded-2xl border-[2px] border-b-[1px] border-b-gray-500   border-l-gray-700/50 border-r-gray-400/80 border-t-gray-500/50'>
+      <div className='h-full w-full p-2'>
         <HumidityPressure
           humidity={hourly.relativehumidity_2m[currentHour]}
           pressure={hourly.surface_pressure[currentHour]}

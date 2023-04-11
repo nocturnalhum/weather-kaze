@@ -17,11 +17,11 @@ export default function City({ meteoData, name, country }) {
       {/* ============================================================================
           ===============<<< Location Header & Button >>>=============================
           ============================================================================ */}
-      <div className='py-3 px-5 max-w-3xl flex m-auto justify-between'>
+      <div className='m-auto flex max-w-3xl justify-between px-5 py-3'>
         <h2 className='text-3xl font-extralight tracking-wide text-gray-50'>{`${name}, ${country}`}</h2>
         <button
           onClick={handleFlip}
-          className='h-auto w-44 rounded-full bg-gradient-to-b from-gray-600 to-black px-4 py-2 font-semibold backdrop-blur-sm text-gray-300'
+          className='h-auto w-44 rounded-full bg-gradient-to-b from-gray-600 to-black px-4 py-2 font-semibold text-gray-300 backdrop-blur-sm'
         >
           {isFlipped ? 'Current Weather' : '7-Day Forecast'}
         </button>
@@ -29,19 +29,19 @@ export default function City({ meteoData, name, country }) {
       {/* ============================================================================
           ===============<<< Weather Content >>>======================================
         ============================================================================ */}
-      <div className='m-auto w-full max-w-3xl perspective'>
+      <div className='m-auto h-full w-full max-w-3xl'>
         <div
-          className={`relative w-full h-96 preserve-3d duration-500 rounded-2xl backface-hidden ${
+          className={`relative h-full w-full rounded-2xl duration-500 preserve-3d backface-hidden ${
             isFlipped ? 'rotate-y-180' : ''
           }`}
         >
           <div
-            className={`absolute bg-gray-500/30 -z-10 w-full h-full backface-hidden border-b-[1px] border-[2px]   border-r-gray-400/80 border-b-gray-500 border-t-gray-500/50 border-l-gray-700/50 rounded-2xl`}
+            className={`absolute -z-10 h-full w-full bg-slate-700/30 backface-hidden`}
           >
             <CurrentWeather meteoData={meteoData} />
           </div>
           <div
-            className={`absolute bg-gray-500/30 w-full h-full  backface-hidden rotate-y-180 border-b-[1px] border-[2px]  border-r-gray-400/80 border-b-gray-500 border-t-gray-500/50 border-l-gray-700/50 rounded-2xl`}
+            className={`absolute h-full w-full rounded-2xl bg-gray-500/30 rotate-y-180 backface-hidden`}
           >
             <ForecastWeather meteoData={meteoData} />
           </div>
