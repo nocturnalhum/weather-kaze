@@ -20,7 +20,7 @@ export default function Layout({ children, title }) {
         />
         <div className='fixed inset-0 -z-10 bg-black/40' />
         <Search />
-        <div className=''>{children}</div>
+        <div className='min-h-screen overflow-auto'>{children}</div>
       </div>
     </>
   );

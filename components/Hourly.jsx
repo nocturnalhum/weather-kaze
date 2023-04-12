@@ -113,7 +113,7 @@ export default function Hourly({ hourlyData, sunrise, sunset }) {
   };
 
   return (
-    <div className='mx-3 mb-2 text-white'>
+    <div className='relative mx-3 mb-2 text-white'>
       <h1 className='mb-1 ml-2 w-full text-2xl font-light tracking-wide'>
         Hourly
       </h1>
