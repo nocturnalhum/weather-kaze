@@ -48,16 +48,16 @@ export default function HumidityPressure({
         </li>
         <li className='flex flex-col items-center justify-center'>
           <span className='mb-1  font-semibold'>Wind</span>
-          <span className='flex items-center justify-start gap-1'>
+          <span className='flex items-center justify-start'>
             <WiStrongWind
               size={15}
               color={'white'}
-              className='rounded-full border'
+              className='mr-1 rounded-full border'
             />
             {windspeed}m/s
             <WiWindDeg
-              size={15}
-              color={'white'}
+              size={20}
+              color={'black'}
               style={{ transform: `rotate(${winddirection + 180}deg)` }}
             />
           </span>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { WiHorizon, WiHorizonAlt } from 'react-icons/wi';
+import { FaSun } from 'react-icons/fa';
 import {
   weatherIconMapping,
   weatherIconMappingDay,
@@ -59,7 +60,10 @@ export default function Middle({
             <div className='text-xl font-semibold'>
               {weatherLabelMapping[currentWeather.weathercode]}
             </div>
-            <div>UV Index: {uvIndex}</div>
+            <div className='flex items-center gap-1'>
+              <FaSun size={20} className='text-amber-400' />
+              UV Index: {uvIndex}
+            </div>
           </div>
         </div>
       </div>
