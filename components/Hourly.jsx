@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import moment from 'moment';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { IoUmbrellaSharp, IoWaterSharp } from 'react-icons/io5';
@@ -12,6 +12,7 @@ import Image from 'next/image';
 
 export default function Hourly({ hourlyData, sunrise, sunset }) {
   const listRef = useRef();
+  const [clicked, setClicked] = useState('click me');
 
   useEffect(() => {
     const scrollPos = listRef.current;
@@ -68,6 +69,12 @@ export default function Hourly({ hourlyData, sunrise, sunset }) {
             {moment(time).format('dddd D')}
           </span>
           <span className='text-lg'>{moment(time).format('h:mm A')}</span>
+          <button
+            className='rounded-xl bg-blue-500'
+            onClick={() => setClicked('Was Clicked')}
+          >
+            {clicked}
+          </button>
         </div>
         <span className='flex items-center text-xl font-medium'>
           <Image
