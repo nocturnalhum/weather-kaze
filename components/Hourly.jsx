@@ -119,7 +119,7 @@ export default function Hourly({ hourlyData, sunrise, sunset }) {
       </h1>
       <BsChevronCompactLeft
         size={30}
-        className='absolute left-0 top-1/2 z-40 cursor-pointer rounded-full bg-gray-300 text-gray-900 opacity-25 backdrop-blur-sm hover:opacity-100'
+        className='absolute left-0 top-1/2 z-10 cursor-pointer rounded-full bg-gray-300 text-gray-900 opacity-25 backdrop-blur-sm hover:opacity-100'
         onClick={onClickPrev}
       />
 
