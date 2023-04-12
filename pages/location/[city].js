@@ -21,7 +21,7 @@ export default function City({ meteoData, name, country }) {
         <h2 className='text-3xl font-extralight tracking-wide text-gray-50'>{`${name}, ${country}`}</h2>
         <button
           onClick={handleFlip}
-          className='h-auto w-44 rounded-full bg-gradient-to-b from-gray-600 to-black px-4 py-2 font-semibold text-gray-300 backdrop-blur-sm'
+          className='h-10 w-44 rounded-full bg-gradient-to-b from-gray-600 to-black px-4 py-2 font-semibold text-gray-300 backdrop-blur-sm'
         >
           {isFlipped ? 'Current Weather' : '7-Day Forecast'}
         </button>
@@ -29,9 +29,9 @@ export default function City({ meteoData, name, country }) {
       {/* ============================================================================
           ===============<<< Weather Content >>>======================================
         ============================================================================ */}
-      <div className='m-auto h-full w-full max-w-3xl'>
+      <div className='m-auto h-full w-full max-w-3xl perspective'>
         <div
-          className={`relative h-full w-full rounded-2xl duration-500 preserve-3d backface-hidden ${
+          className={`relative h-full rounded-2xl duration-500 preserve-3d backface-hidden ${
             isFlipped ? 'rotate-y-180' : ''
           }`}
         >

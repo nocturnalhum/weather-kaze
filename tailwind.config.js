@@ -9,7 +9,7 @@ const Myclass = plugin(function ({ addUtilities }) {
       transformStyle: 'preserve-3d',
     },
     '.perspective': {
-      perspective: '2000px',
+      perspective: '3000px',
     },
     '.backface-hidden': {
       'backface-visibility': 'hidden',

@@ -29,6 +29,22 @@ export default function Hourly({ hourlyData, sunrise, sunset }) {
     }
   }, []);
 
+  const onClickPrev = () => {
+    const scrollPos = listRef.current;
+    scrollPos.scrollTo({
+      left: scrollPos.scrollLeft - scrollPos.offsetWidth * 0.85,
+      behavior: 'smooth',
+    });
+  };
+
+  const onClickNext = () => {
+    const scrollPos = listRef.current;
+    scrollPos.scrollTo({
+      left: scrollPos.scrollLeft + scrollPos.offsetWidth * 0.85,
+      behavior: 'smooth',
+    });
+  };
+
   const columnVirtualizer = useVirtualizer({
     horizontal: true,
     count: hourlyData.length,
@@ -97,13 +113,14 @@ export default function Hourly({ hourlyData, sunrise, sunset }) {
   };
 
   return (
-    <div className='relative mx-4 mb-4 text-white'>
+    <div className='relative mx-3 mb-2 text-white'>
       <h1 className='mb-1 ml-2 w-full text-2xl font-light tracking-wide'>
         Hourly
       </h1>
       <BsChevronCompactLeft
         size={30}
-        className='absolute left-0 top-1/2 z-10 cursor-pointer rounded-full bg-gray-300 text-gray-900  opacity-25 backdrop-blur-sm hover:opacity-100'
+        className='absolute left-0 top-1/2 z-10 cursor-pointer rounded-full bg-gray-300 text-gray-900 opacity-25 backdrop-blur-sm hover:opacity-100'
+        onClick={onClickPrev}
       />
 
       <div ref={listRef} className='List h-60 w-full overflow-auto'>
@@ -131,6 +148,7 @@ export default function Hourly({ hourlyData, sunrise, sunset }) {
       <BsChevronCompactRight
         size={30}
         className='absolute right-0 top-1/2 ml-9 cursor-pointer rounded-full  bg-gray-300 text-gray-900 opacity-25 hover:opacity-100'
+        onClick={onClickNext}
       />
     </div>
   );
