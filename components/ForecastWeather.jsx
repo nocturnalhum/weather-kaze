@@ -11,7 +11,7 @@ import { FaSun } from 'react-icons/fa';
 import { WiHorizon, WiHorizonAlt } from 'react-icons/wi';
 
 // Set to 'true' to display console log messages:
-let DEBUG = true;
+let DEBUG = false;
 
 export default function ForecastWeather({ meteoData }) {
   const { daily } = meteoData;

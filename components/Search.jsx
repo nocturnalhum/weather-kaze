@@ -68,7 +68,6 @@ export default function Search() {
             `https://geocoding-api.open-meteo.com/v1/search?name=${debounceSearch}&count=50`
           );
           const { results } = await res.json();
-          console.log('Locations', results);
           if (!results) {
             setQueryList([]);
             setNotFound(true);
@@ -88,12 +87,6 @@ export default function Search() {
     if (!resultContainer.current) return;
     resultContainer.current.scrollIntoView({ block: 'center' });
     setSelectLocation(resultContainer.current.textContent);
-    console.log(
-      'resultContainer.current',
-      resultContainer.current,
-      'tabIndex',
-      resultContainer.current.tabIndex
-    );
   }, [focusedIndex]);
 
   // ==========================================================================
@@ -117,12 +110,6 @@ export default function Search() {
         : router.push(resultContainer.current.firstChild.getAttribute('href'));
       setQuery('');
     }
-    console.log(
-      'nextIndexCount',
-      nextIndexCount,
-      'queryList.length',
-      queryList.length
-    );
     setFocusedIndex(nextIndexCount);
   };
 
