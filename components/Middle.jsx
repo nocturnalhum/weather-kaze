@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { WiHorizon, WiHorizonAlt } from 'react-icons/wi';
 import { FaSun } from 'react-icons/fa';
 import {
-  weatherIconMapping,
   weatherIconMappingDay,
   weatherIconMappingNight,
   weatherLabelMapping,
@@ -80,7 +79,7 @@ export default function Middle({
         <div className='flex flex-col font-semibold'>
           <div className='flex items-center '>
             Sunset
-            <WiHorizonAlt size={35} />
+            <WiHorizon size={35} />
           </div>
           <div className='pl-2'>{moment(sunsetToday).format('h:mm A')}</div>
         </div>

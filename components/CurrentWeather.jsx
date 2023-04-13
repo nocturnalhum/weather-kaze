@@ -4,7 +4,6 @@ import Middle from './Middle';
 import Hourly from './Hourly';
 
 export default function CurrentWeather({ meteoData }) {
-  console.log('meteoData', meteoData);
   const { current_weather, daily, hourly, timezone } = meteoData;
   const { is_day, temperature, time, weathercode, winddirection, windspeed } =
     current_weather;
