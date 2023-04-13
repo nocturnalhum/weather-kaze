@@ -36,7 +36,7 @@ export default function City({ meteoData, name, country }) {
           }`}
         >
           <div
-            className={`absolute -z-10 h-full w-full bg-slate-700/30 backface-hidden`}
+            className={`absolute z-50 h-full w-full bg-slate-700/30 backface-hidden`}
           >
             <CurrentWeather meteoData={meteoData} />
           </div>
