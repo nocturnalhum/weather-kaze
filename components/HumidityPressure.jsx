@@ -9,6 +9,7 @@ import {
 
 export default function HumidityPressure({
   humidity,
+  isEmpirical,
   pressure,
   visibility,
   windspeed,
@@ -43,7 +44,7 @@ export default function HumidityPressure({
           <span className='mb-1  font-semibold'>Visibility</span>
           <span className='flex items-center justify-start gap-1 text-gray-950'>
             <ImEye size={15} color={'white'} className='rounded-full border' />
-            {`${Math.round(visibility / 1000)}km`}
+            {`${visibility}${isEmpirical ? 'mi' : 'km'}`}
           </span>
         </li>
         <li className='flex flex-col items-center justify-center'>
@@ -54,7 +55,8 @@ export default function HumidityPressure({
               color={'white'}
               className='mr-1 rounded-full border'
             />
-            {windspeed}m/s
+            {windspeed}
+            {isEmpirical ? 'mph' : 'kmh'}
             <WiWindDeg
               size={20}
               color={'black'}

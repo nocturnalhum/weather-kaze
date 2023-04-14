@@ -13,7 +13,7 @@ export default function Layout({ children, title }) {
 
       <div className='relative min-h-screen overflow-auto'>
         <Image
-          src='https://images.unsplash.com/photo-1621497591119-6062a8a5b8f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjEwfHx0aHVuZGVyc3Rvcm18ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60'
+          src='https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80'
           alt='pacific background'
           fill
           className='-z-10 object-cover object-center'

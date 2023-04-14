@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import moment from 'moment';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { IoUmbrellaSharp, IoWaterSharp } from 'react-icons/io5';
 import {
@@ -7,10 +9,9 @@ import {
   weatherIconMappingNight,
   weatherLabelMapping,
 } from '@/lib/weatherMapping';
-import { useVirtualizer } from '@tanstack/react-virtual';
-import Image from 'next/image';
+import { mmToInches } from '@/lib/metricToEmpirical';
 
-export default function Hourly({ hourlyData, sunrise, sunset }) {
+export default function Hourly({ hourlyData, sunrise, sunset, isEmpirical }) {
   const listRef = useRef();
 
   useEffect(() => {
@@ -83,7 +84,7 @@ export default function Hourly({ hourlyData, sunrise, sunset }) {
           <div className='flex flex-col'>
             <span className='flex text-2xl'>
               {Math.round(hourlyData[index].temperature)}
-              <span className='text-sm'>°C</span>
+              <span className='text-sm'>°{isEmpirical ? 'F' : 'C'}</span>
             </span>
             <div className='ml-5 text-sm font-medium'>
               {Math.round(hourlyData[index].feels_like)}°
@@ -104,7 +105,14 @@ export default function Hourly({ hourlyData, sunrise, sunset }) {
             </div>
             <div className='flex items-center lowercase'>
               <IoWaterSharp size={16} className='text-cyan-400' />
-              <span>{hourlyData[index].precipitation} mm</span>
+              <span>
+                {isEmpirical
+                  ? parseFloat(
+                      mmToInches(hourlyData[index].precipitation).toFixed(2)
+                    )
+                  : hourlyData[index].precipitation}{' '}
+                {isEmpirical ? 'in' : 'mm'}
+              </span>
             </div>
           </div>
         </div>

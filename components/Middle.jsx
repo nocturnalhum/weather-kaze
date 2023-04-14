@@ -16,12 +16,14 @@ export default function Middle({
   feelsLike,
   sunrise,
   sunset,
+  temperature,
+  isEmpirical,
 }) {
   const sunriseToday = sunrise[0];
   const sunsetToday = sunset[0];
 
   return (
-    <div className='m-2 flex flex-col rounded-xl bg-gray-700/50 p-3 capitalize text-gray-50 shadow-2xl backdrop-blur-sm'>
+    <div className='m-2 flex flex-col rounded-xl bg-gray-700/50 p-2 capitalize text-gray-50 shadow-2xl backdrop-blur-sm'>
       {/* ============================================================================
           ===============<<< Currently Heading >>>====================================
           ============================================================================ */}
@@ -33,12 +35,12 @@ export default function Middle({
       <div className='flex space-x-5'>
         <div className='flex w-24 flex-col items-center'>
           <div className='flex'>
-            <div className='pr-1 text-5xl font-semibold'>
-              {Math.round(currentWeather.temperature)}
+            <div className='pr-1 text-5xl font-light '>
+              {Math.round(temperature)}
             </div>
-            <span className='text-2xl'>°C</span>
+            <span className='text-2xl'>°{isEmpirical ? 'F' : 'C'}</span>
           </div>
-          <div className='text-sm'>{feelsLike}°</div>
+          <div className='text-sm'>{Math.round(feelsLike)}°</div>
           <div className='text-sm font-light'>feels like</div>
         </div>
         {/* ============================================================================
@@ -56,7 +58,7 @@ export default function Middle({
             height={85}
           />
           <div className='ml-3 flex flex-col'>
-            <div className='text-xl font-semibold'>
+            <div className='text-xl font-light'>
               {weatherLabelMapping[currentWeather.weathercode]}
             </div>
             <div className='flex items-center gap-1'>

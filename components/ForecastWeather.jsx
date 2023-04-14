@@ -9,27 +9,35 @@ import Image from 'next/image';
 import { IoUmbrellaSharp, IoWaterSharp } from 'react-icons/io5';
 import { FaSun } from 'react-icons/fa';
 import { WiHorizon, WiHorizonAlt } from 'react-icons/wi';
+import { celciusToFahrenheit, mmToInches } from '@/lib/metricToEmpirical';
 
 // Set to 'true' to display console log messages:
 let DEBUG = false;
 
-export default function ForecastWeather({ meteoData }) {
+export default function ForecastWeather({ meteoData, isEmpirical }) {
   const { daily } = meteoData;
 
   let dailyData = [];
 
   for (let i = 0; i < daily.time.length; i++) {
     dailyData.push({
-      feels_like_max: Math.round(daily?.apparent_temperature_max[i]),
-      feels_like_min: Math.round(daily?.apparent_temperature_min[i]),
+      feels_like_max: isEmpirical
+        ? celciusToFahrenheit(Math.round(daily?.apparent_temperature_max[i]))
+        : Math.round(daily?.apparent_temperature_max[i]),
       precipitation_probability_max: daily?.precipitation_probability_max[i],
-      total_precipitation: daily?.precipitation_sum[i],
+      total_precipitation: isEmpirical
+        ? parseFloat(mmToInches(daily?.precipitation_sum[i]).toFixed(2))
+        : daily?.precipitation_sum[i],
       sunrise: daily?.sunrise[i],
       sunset: daily?.sunset[i],
-      temp_high: Math.round(daily?.temperature_2m_max[i]),
-      temp_low: Math.round(daily?.temperature_2m_min[i]),
+      temp_high: isEmpirical
+        ? celciusToFahrenheit(Math.round(daily?.temperature_2m_max[i]))
+        : Math.round(daily?.temperature_2m_max[i]),
+      temp_low: isEmpirical
+        ? celciusToFahrenheit(Math.round(daily?.temperature_2m_min[i]))
+        : Math.round(daily?.temperature_2m_min[i]),
       day: daily?.time[i],
-      uv_index_max: Math.round(daily?.uv_index_max[i]),
+      uv_index_max: daily?.uv_index_max[i].toFixed(1),
       weathercode: daily?.weathercode[i],
       winddirection: daily?.winddirection_10m_dominant[i],
       windgusts: daily?.windgusts_10m_max[i],
@@ -40,6 +48,10 @@ export default function ForecastWeather({ meteoData }) {
 
   return (
     <div className='relative rounded-2xl border-2 border-gray-600/70 border-r-gray-400 border-t-gray-500   bg-gradient-to-br from-gray-300/10 to-pink-100/10 p-5 shadow-inner backdrop-blur-sm'>
+      {/* ===================================================================*/}
+      {/* ==============<<< Heading: 7 Day Forecast >>=======================*/}
+      {/* ===================================================================*/}
+      <h1 className='mb-2 text-3xl font-light tracking-wide'>7 Day Forecast</h1>
       <div className='grid-rows-8 grid grid-cols-8 gap-3'>
         <div className='rounded-lg bg-blue-600/50 p-2 portrait:col-span-8 portrait:row-span-2 landscape:col-span-2 landscape:row-span-2'>
           {/* ===================================================================*/}
@@ -58,7 +70,9 @@ export default function ForecastWeather({ meteoData }) {
               <div className='flex'>
                 <span className='flex'>
                   <span className=''>{dailyData[0].temp_high}</span>
-                  <span className='pl-1 text-2xl font-light'>°C</span>
+                  <span className='pl-1 text-2xl font-light'>
+                    °{isEmpirical ? 'F' : 'C'}
+                  </span>
                 </span>
               </div>
               <span className='flex items-start justify-center text-base text-sky-300'>
@@ -79,13 +93,14 @@ export default function ForecastWeather({ meteoData }) {
             </div>
           </div>
           <span className='pl-3 font-light text-gray-300'>
-            Feels like: {Math.round(dailyData[0].feels_like_max)}°C
+            Feels like: {Math.round(dailyData[0].feels_like_max)}°
+            {isEmpirical ? 'F' : 'C'}
           </span>
           {/* ===================================================================*/}
           {/* ==============<<< Today - UV Index >>>=============================*/}
           {/* ===================================================================*/}
           <div className='mt-3 flex items-center'>
-            <FaSun size={16} className='text-amber-300' />
+            <FaSun size={16} className='text-amber-400' />
             <span className='ml-1 text-sm'>
               UV Index: {dailyData[0].uv_index_max} of 10
             </span>
@@ -103,7 +118,10 @@ export default function ForecastWeather({ meteoData }) {
               </div>
               <div className='flex items-center lowercase'>
                 <IoWaterSharp size={16} className='text-cyan-400' />
-                <span>{dailyData[0].total_precipitation} mm</span>
+                <span>
+                  {dailyData[0].total_precipitation}
+                  {isEmpirical ? 'in' : 'mm'}
+                </span>
               </div>
             </div>
           </div>
@@ -126,7 +144,7 @@ export default function ForecastWeather({ meteoData }) {
                   <h1 className='text-lg font-semibold'>
                     {moment(day.day).format('dddd D')}
                   </h1>
-                  <div className='text-lg font-normal capitalize'>
+                  <div className='text-base font-normal capitalize'>
                     {weatherLabelMapping[day.weathercode]}
                   </div>
 
@@ -145,7 +163,7 @@ export default function ForecastWeather({ meteoData }) {
                         <div className='text-2xl font-bold'>
                           {day.temp_high}
                         </div>
-                        <div>°C</div>
+                        <span>°{isEmpirical ? 'F' : 'C'}</span>
                       </div>
                       <div className='pl-1 font-bold text-sky-300'>
                         {day.temp_low}°
@@ -158,7 +176,7 @@ export default function ForecastWeather({ meteoData }) {
                   {/* ===================================================================*/}
 
                   <div className='mb-1 flex items-center text-sm'>
-                    <FaSun size={16} className='text-amber-300' />
+                    <FaSun size={16} className='text-amber-400' />
                     <span className='ml-1'>UV: {day.uv_index_max} of 10</span>
                   </div>
                   {/* ===================================================================*/}
@@ -174,7 +192,9 @@ export default function ForecastWeather({ meteoData }) {
                       </div>
                       <div className='flex items-center lowercase'>
                         <IoWaterSharp size={16} className='text-cyan-400' />
-                        <span>{day.total_precipitation} mm</span>
+                        <span>
+                          {day.total_precipitation} {isEmpirical ? 'in' : 'mm'}
+                        </span>
                       </div>
                     </div>
                   </div>
