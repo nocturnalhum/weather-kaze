@@ -19,7 +19,7 @@ export default function HumidityPressure({
       <ul className='flex justify-between text-sm'>
         <li className='flex flex-col items-center justify-center'>
           <span className='mb-1 font-semibold'>Humidity</span>
-          <span className='flex items-center justify-start gap-1'>
+          <span className='flex items-center justify-start gap-1 text-gray-950'>
             <WiHumidity
               size={15}
               color={'white'}
@@ -30,7 +30,7 @@ export default function HumidityPressure({
         </li>
         <li className='flex flex-col items-center justify-center'>
           <span className='mb-1  font-semibold'>Pressure</span>
-          <span className='flex items-center justify-start gap-1'>
+          <span className='flex items-center justify-start gap-1 text-gray-950'>
             <WiBarometer
               size={15}
               color={'white'}
@@ -41,14 +41,14 @@ export default function HumidityPressure({
         </li>
         <li className='flex flex-col items-center justify-center'>
           <span className='mb-1  font-semibold'>Visibility</span>
-          <span className='flex items-center justify-start gap-1'>
+          <span className='flex items-center justify-start gap-1 text-gray-950'>
             <ImEye size={15} color={'white'} className='rounded-full border' />
             {`${Math.round(visibility / 1000)}km`}
           </span>
         </li>
         <li className='flex flex-col items-center justify-center'>
           <span className='mb-1  font-semibold'>Wind</span>
-          <span className='flex items-center justify-start'>
+          <span className='flex items-center justify-start text-gray-950'>
             <WiStrongWind
               size={15}
               color={'white'}

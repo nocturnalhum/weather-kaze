@@ -73,6 +73,7 @@ export default function Search() {
             setNotFound(true);
             return;
           }
+          console.log('Results', results);
           setQueryList(results);
         }
       }
@@ -183,9 +184,9 @@ export default function Search() {
                       onClick={() => setQuery('')}
                       className='w-full cursor-pointer focus:outline-none'
                     >
-                      <div className='h-10 w-full p-2 px-8'>
+                      <div className='flex h-12 w-full items-center p-2 px-8'>
                         {city.name}, {city.admin1 ? `${city.admin1}, ` : ''}
-                        {city.country ? city.country : city.country_code}
+                        {city.country_code ? city.country_code : city.country}
                       </div>
                     </Link>
                   </li>

@@ -39,7 +39,7 @@ export default function ForecastWeather({ meteoData }) {
   DEBUG && console.log('ForecastWeather.jsx- dailyData', dailyData);
 
   return (
-    <div className='relative min-h-full rounded-2xl border-2 border-gray-600/70 border-r-gray-400 border-t-gray-500   bg-gradient-to-br from-gray-300/10 to-pink-100/10 p-5 shadow-inner backdrop-blur-sm'>
+    <div className='relative rounded-2xl border-2 border-gray-600/70 border-r-gray-400 border-t-gray-500   bg-gradient-to-br from-gray-300/10 to-pink-100/10 p-5 shadow-inner backdrop-blur-sm'>
       <div className='grid-rows-8 grid grid-cols-8 gap-3'>
         <div className='rounded-lg bg-blue-600/50 p-2 portrait:col-span-8 portrait:row-span-2 landscape:col-span-2 landscape:row-span-2'>
           {/* ===================================================================*/}
