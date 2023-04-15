@@ -30,7 +30,9 @@ export default function CurrentWeather({ meteoData, isEmpirical }) {
     ? metersToMiles(hourly.visibility[currentHour])
     : Math.round(hourly.visibility[currentHour] / 1000);
 
-  const newWindspeed = isEmpirical ? kmhToMph(windspeed) : windspeed;
+  const newWindspeed = isEmpirical
+    ? kmhToMph(windspeed)
+    : Math.round(windspeed);
 
   for (let i = currentHour; i < hourly.time.length; i++) {
     hourlyData.push({

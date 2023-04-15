@@ -37,7 +37,7 @@ export default function City({ meteoData, name, country, isEmpirical }) {
           ===============<<< Location Header & Button >>>=============================
           ============================================================================ */}
       <div className='m-auto flex max-w-3xl flex-col px-5 py-3'>
-        <h2 className='text-3xl font-extralight tracking-wide text-gray-50'>{`${name}, ${country}`}</h2>
+        <h2 className='z-0 text-3xl font-extralight tracking-wide text-gray-50'>{`${name}, ${country}`}</h2>
         <div className='mt-3 flex justify-end'>
           <button
             onClick={handleFlip}
