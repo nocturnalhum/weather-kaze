@@ -41,7 +41,7 @@ export default function City({ meteoData, name, country, isEmpirical }) {
         <div className='mt-3 flex justify-end'>
           <button
             onClick={handleFlip}
-            className='h-auto w-28 rounded-l-full  border-r-2   border-gray-700 bg-gradient-to-b from-gray-600 to-black px-4 py-2 font-semibold text-gray-300 backdrop-blur-sm'
+            className='h-auto w-28 rounded-l-full  border-r-2 border-gray-700 bg-gradient-to-b from-gray-600 to-black px-4 py-2 font-semibold text-gray-300 backdrop-blur-sm'
           >
             {isFlipped ? 'Currently' : 'Forecast'}
           </button>
@@ -74,13 +74,11 @@ export default function City({ meteoData, name, country, isEmpirical }) {
             isFlipped ? 'rotate-y-180' : ''
           }`}
         >
-          <div
-            className={`absolute z-50 h-full w-full bg-slate-700/30 backface-hidden`}
-          >
+          <div className={`absolute z-50 h-full w-full backface-hidden`}>
             <CurrentWeather meteoData={meteoData} isEmpirical={emperical} />
           </div>
           <div
-            className={`absolute h-full w-full rounded-2xl bg-gray-500/30 rotate-y-180 backface-hidden`}
+            className={`absolute h-full w-full rounded-2xl rotate-y-180 backface-hidden`}
           >
             <ForecastWeather meteoData={meteoData} isEmpirical={emperical} />
           </div>

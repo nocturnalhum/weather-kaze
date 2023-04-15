@@ -47,13 +47,13 @@ export default function ForecastWeather({ meteoData, isEmpirical }) {
   DEBUG && console.log('ForecastWeather.jsx- dailyData', dailyData);
 
   return (
-    <div className='relative rounded-2xl border-2 border-gray-600/70 border-r-gray-400 border-t-gray-500   bg-gradient-to-br from-gray-300/10 to-pink-100/10 p-5 shadow-inner backdrop-blur-sm'>
+    <div className='relative rounded-2xl border-[2px] border-b-slate-600/80 border-l-slate-700/40 border-r-slate-300/60 border-t-gray-400/50 bg-slate-500/20 p-2 shadow-inner backdrop-blur-sm'>
       {/* ===================================================================*/}
       {/* ==============<<< Heading: 7 Day Forecast >>=======================*/}
       {/* ===================================================================*/}
       <h1 className='mb-2 text-3xl font-light tracking-wide'>7 Day Forecast</h1>
       <div className='grid-rows-8 grid grid-cols-8 gap-3'>
-        <div className='rounded-lg bg-blue-600/50 p-2 portrait:col-span-8 portrait:row-span-2 landscape:col-span-2 landscape:row-span-2'>
+        <div className='rounded-lg bg-blue-600/50 p-2 shadow-xl portrait:col-span-8 portrait:row-span-2 landscape:col-span-2 landscape:row-span-2'>
           {/* ===================================================================*/}
           {/* ==============<<< Today & Weather Conditions >>=====================*/}
           {/* ===================================================================*/}
@@ -136,7 +136,7 @@ export default function ForecastWeather({ meteoData, isEmpirical }) {
               return (
                 <div
                   key={index}
-                  className='rounded-lg bg-gray-500/90 px-2 py-1'
+                  className='rounded-lg bg-gray-500/90 px-2 py-1 shadow-xl'
                 >
                   {/* ===================================================================*/}
                   {/* ==============<<< Date & Weather Conditions >>=====================*/}
