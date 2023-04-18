@@ -149,7 +149,7 @@ export default function Search() {
             {queryList.length && !notFound ? (
               <div
                 onClick={handleClick}
-                className='z-0 my-1 flex cursor-pointer items-center rounded-md border bg-gray-500/40 px-6 py-2 pl-7 text-lg  font-medium text-orange-400 backdrop-blur-sm'
+                className='absolute top-10 z-0 my-3 flex w-full cursor-pointer items-center rounded-md border bg-gray-500/40 px-6 py-2 pl-7 text-lg  font-medium text-orange-400 backdrop-blur-sm'
               >
                 {selectLocation}
               </div>
@@ -161,7 +161,7 @@ export default function Search() {
             {queryList.length && !notFound ? (
               <div
                 tabIndex={-1}
-                className='h-56 w-full space-y-1 overflow-y-auto rounded-md bg-transparent text-white scrollbar-hide'
+                className='absolute top-24 my-2 h-64   w-full space-y-1 overflow-y-auto rounded-md bg-transparent text-white scrollbar-hide'
               >
                 {queryList.map((city, index) => (
                   <li
@@ -197,7 +197,7 @@ export default function Search() {
                 ===============<<< Display Location Not Found >>>====================
                 ===================================================================== */}
             {notFound && (
-              <div className='mt-1 rounded-md border border-gray-50 bg-gray-600/30 px-6 py-2 text-lg text-orange-400 backdrop-blur-sm'>
+              <div className='absolute my-1.5 w-full rounded-md border border-gray-50 bg-gray-600/30 px-6 py-2 text-lg text-orange-400 backdrop-blur-sm'>
                 Location not found
               </div>
             )}

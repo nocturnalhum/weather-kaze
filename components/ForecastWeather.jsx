@@ -47,11 +47,11 @@ export default function ForecastWeather({ meteoData, isEmpirical }) {
   DEBUG && console.log('ForecastWeather.jsx- dailyData', dailyData);
 
   return (
-    <div className='relative rounded-2xl border-[2px] border-b-slate-600/80 border-l-slate-700/40 border-r-slate-300/60 border-t-gray-400/50 bg-slate-500/20 p-2 shadow-inner backdrop-blur-sm'>
+    <div className='shadow-innner relative rounded-2xl border-2 border-gray-600/80 border-r-gray-400 border-t-gray-500 bg-slate-500/20 p-2 pb-8 backdrop-blur-sm'>
       {/* ===================================================================*/}
       {/* ==============<<< Heading: 7 Day Forecast >>=======================*/}
       {/* ===================================================================*/}
-      <h1 className='mb-2 text-3xl font-light tracking-wide'>7 Day Forecast</h1>
+      <h1 className='m-3 text-3xl font-light tracking-wide'>7 Day Forecast</h1>
       <div className='grid-rows-8 grid grid-cols-8 gap-3'>
         <div className='rounded-lg bg-blue-600/50 p-2 shadow-xl portrait:col-span-8 portrait:row-span-2 landscape:col-span-2 landscape:row-span-2'>
           {/* ===================================================================*/}
@@ -116,7 +116,7 @@ export default function ForecastWeather({ meteoData, isEmpirical }) {
                   {dailyData[0].precipitation_probability_max}%
                 </span>
               </div>
-              <div className='flex items-center lowercase'>
+              <div className='flex items-center pl-4 lowercase'>
                 <IoWaterSharp size={16} className='text-cyan-400' />
                 <span>
                   {dailyData[0].total_precipitation}
@@ -190,7 +190,7 @@ export default function ForecastWeather({ meteoData, isEmpirical }) {
                           {day.precipitation_probability_max}%
                         </span>
                       </div>
-                      <div className='flex items-center lowercase'>
+                      <div className='flex items-center pl-4 lowercase'>
                         <IoWaterSharp size={16} className='text-cyan-400' />
                         <span>
                           {day.total_precipitation} {isEmpirical ? 'in' : 'mm'}

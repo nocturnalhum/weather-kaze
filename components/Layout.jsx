@@ -11,7 +11,9 @@ export default function Layout({ children, title }) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
 
-      <div className='relative min-h-screen overflow-auto bg-pacific bg-cover bg-center'>
+      <div
+        className={`relative min-h-screen overflow-auto bg-snow bg-cover bg-center`}
+      >
         <div className='absolute inset-0 bg-black/40' />
         {/* <Image
           src='https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80'

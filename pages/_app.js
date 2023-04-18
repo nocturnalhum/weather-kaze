@@ -9,6 +9,7 @@ import { HiCloud } from 'react-icons/hi2';
 
 export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const start = () => {
       console.log('start');

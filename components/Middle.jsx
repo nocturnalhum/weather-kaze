@@ -12,7 +12,6 @@ import moment from 'moment';
 export default function Middle({
   currentWeather,
   uvIndex,
-  timezone,
   feelsLike,
   sunrise,
   sunset,

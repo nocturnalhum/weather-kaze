@@ -131,7 +131,10 @@ export default function Hourly({ hourlyData, sunrise, sunset, isEmpirical }) {
         onClick={onClickPrev}
       />
 
-      <div ref={listRef} className='List h-60 w-full overflow-auto'>
+      <div
+        ref={listRef}
+        className='List h-60 w-full overflow-auto scrollbar-hide'
+      >
         <div
           style={{
             width: `${columnVirtualizer.getTotalSize()}px`,
