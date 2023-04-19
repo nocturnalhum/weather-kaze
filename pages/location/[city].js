@@ -78,7 +78,7 @@ export default function City({ meteoData, name, country, isEmpirical }) {
             <CurrentWeather meteoData={meteoData} isEmpirical={emperical} />
           </div>
           <div
-            className={`absolute h-full w-full rounded-2xl rotate-y-180 backface-hidden`}
+            className={`absolute z-50 h-full w-full rounded-2xl rotate-y-180 backface-hidden`}
           >
             <ForecastWeather meteoData={meteoData} isEmpirical={emperical} />
           </div>
