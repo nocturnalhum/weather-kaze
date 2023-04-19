@@ -10,7 +10,6 @@ import {
 } from '@/lib/metricToEmpirical';
 
 export default function CurrentWeather({ meteoData, isEmpirical }) {
-  console.log('Meteo', meteoData);
   const { current_weather, daily, hourly, timezone } = meteoData;
   const { temperature, time, winddirection, windspeed } = current_weather;
 

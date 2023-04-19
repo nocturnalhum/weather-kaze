@@ -48,9 +48,9 @@ export default function Hourly({ hourlyData, sunrise, sunset, isEmpirical }) {
 
   const columnVirtualizer = useVirtualizer({
     horizontal: true,
-    count: hourlyData.length,
+    count: 168,
     getScrollElement: () => listRef.current,
-    estimateSize: () => hourlyData.length,
+    estimateSize: () => 168,
     overscan: 5,
   });
 
