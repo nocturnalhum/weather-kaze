@@ -22,25 +22,22 @@ export default function Middle({
   const sunsetToday = sunset[0];
 
   return (
-    <div className='m-2 flex flex-col rounded-xl bg-gray-700/50 p-2 capitalize text-gray-50 shadow-2xl backdrop-blur-sm'>
-      {/* ============================================================================
-          ===============<<< Currently Heading >>>====================================
-          ============================================================================ */}
-      <h1 className='text-2xl font-light tracking-wide'>currently</h1>
-
+    <div className='m-2 flex flex-col rounded-lg bg-gray-700/50 p-2 capitalize text-gray-50 shadow-2xl backdrop-blur-sm'>
       {/* ============================================================================
           ===============<<< Current Temperature >>>===================================
           ============================================================================ */}
       <div className='flex space-x-5'>
         <div className='flex w-24 flex-col items-center'>
           <div className='flex'>
-            <div className='pr-1 text-5xl font-light '>
+            <div className='pr-1 text-5xl font-medium text-amber-400'>
               {Math.round(temperature)}
             </div>
-            <span className='text-2xl'>°{isEmpirical ? 'F' : 'C'}</span>
+            <span className='text-2xl text-amber-400'>
+              °{isEmpirical ? 'F' : 'C'}
+            </span>
           </div>
-          <div className='text-sm'>{Math.round(feelsLike)}°</div>
-          <div className='text-sm font-light'>feels like</div>
+          <div className='text-md font-semibold'>{Math.round(feelsLike)}°</div>
+          <div className='text-xs font-light'>feels like</div>
         </div>
         {/* ============================================================================
             ===============<<< Weather Description >>>==================================

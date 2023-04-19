@@ -53,6 +53,12 @@ export default function CurrentWeather({ meteoData, isEmpirical }) {
 
   return (
     <div className='relative rounded-2xl border-2 border-gray-600/80 border-r-gray-400 border-t-gray-500 bg-slate-500/20 shadow-inner backdrop-blur-sm'>
+      {/* ============================================================================
+          ===============<<< Currently Heading >>>====================================
+          ============================================================================ */}
+      <h1 className='m-2 rounded-lg bg-gradient-to-l from-gray-800/60 to-black p-3 pl-3 text-2xl font-light capitalize tracking-wide'>
+        currently
+      </h1>
       <div className='h-full w-full p-2'>
         <HumidityPressure
           humidity={hourly.relativehumidity_2m[currentHour]}

@@ -16,7 +16,7 @@ export default function HumidityPressure({
   winddirection,
 }) {
   return (
-    <div className='h-16 rounded-xl bg-gray-400/70 p-2 shadow-lg shadow-gray-900/30 backdrop-blur-sm'>
+    <div className='h-16 rounded-lg bg-gray-400/70 p-2 shadow-lg shadow-gray-900/30 backdrop-blur-sm'>
       <ul className='flex justify-between text-sm'>
         <li className='flex flex-col items-center justify-center'>
           <span className='mb-1 font-semibold'>Humidity</span>

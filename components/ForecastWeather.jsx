@@ -49,6 +49,7 @@ export default function ForecastWeather({ meteoData, isEmpirical }) {
     count: dailyData.length - 1,
     getScrollElement: () => listRef.current,
     estimateSize: () => dailyData.length - 1,
+    overscan: 10,
   });
 
   const rows = RowVirtualizer.getVirtualItems();
@@ -61,14 +62,14 @@ export default function ForecastWeather({ meteoData, isEmpirical }) {
       <h1 className='rounded-lg bg-gradient-to-l from-gray-800/60 to-black p-3 px-4 text-2xl font-normal tracking-wide'>
         Weekly Forecast
       </h1>
-      <div className='my-2 rounded-lg bg-blue-600/50 p-2 shadow-xl'>
+      <div className='my-2 rounded-lg bg-blue-600/50 p-2 px-3 shadow-xl '>
         <h1 className='pb-2 text-3xl font-medium'>Today</h1>
         <div className='flex max-w-md  justify-between'>
           {/* ===================================================================*/}
           {/* ==============<<< Temperature >>===================================*/}
           {/* ===================================================================*/}
           <div className='flex flex-col'>
-            <div className='flex text-4xl font-bold text-amber-400 landscape:text-4xl'>
+            <div className='flex text-4xl font-bold text-amber-400'>
               <span className=''>{dailyData[0].temp_high}</span>
               <span className='pl-1 text-2xl font-light'>
                 °{isEmpirical ? 'F' : 'C'}
@@ -98,10 +99,10 @@ export default function ForecastWeather({ meteoData, isEmpirical }) {
               className='absolute top-4'
             />
           </div>
-          <div className='flex flex-col'>
+          <div className='flex flex-col text-sm'>
             <span className='flex'>
               <FaSun size={16} className='text-amber-400' />
-              <span className='ml-1 text-sm'>
+              <span className='ml-1'>
                 UV Index: {dailyData[0].uv_index_max}
               </span>
             </span>
@@ -116,7 +117,7 @@ export default function ForecastWeather({ meteoData, isEmpirical }) {
               <IoWaterSharp size={16} className='text-cyan-400' />
               <span>
                 Prec: {dailyData[0].total_precipitation}
-                {isEmpirical ? 'in' : 'mm'}
+                <span className='lowercase'>{isEmpirical ? ' in' : ' mm'}</span>
               </span>
             </div>
           </div>

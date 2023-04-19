@@ -43,7 +43,7 @@ export default function City({ meteoData, name, country, isEmpirical }) {
             onClick={handleFlip}
             className='h-auto w-28 rounded-l-full  border-r-2 border-gray-700 bg-gradient-to-b from-gray-600 to-black px-4 py-2 font-semibold text-gray-300 backdrop-blur-sm'
           >
-            {isFlipped ? 'Currently' : 'Forecast'}
+            {isFlipped ? 'Currently' : 'Weekly'}
           </button>
           <button
             onClick={handleEmpirical}
