@@ -11,7 +11,7 @@ export default function Search() {
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const [selectLocation, setSelectLocation] = useState('Select Location...');
 
-  const debounceSearch = useDebounce(query, 500);
+  const debounceSearch = useDebounce(query, 200);
   const resultContainer = useRef(null);
   const router = useRouter();
 
