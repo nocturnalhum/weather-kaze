@@ -49,7 +49,6 @@ export default function ForecastWeather({ meteoData, isEmpirical }) {
     count: dailyData.length - 1,
     getScrollElement: () => listRef.current,
     estimateSize: () => dailyData.length - 1,
-    overscan: 5,
   });
 
   const rows = RowVirtualizer.getVirtualItems();

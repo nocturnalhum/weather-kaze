@@ -74,17 +74,13 @@ export default function City({ meteoData, name, country, isEmpirical }) {
             isFlipped ? 'rotate-y-180' : ''
           }`}
         >
-          <div
-            className={`absolute ${
-              isFlipped ? 'z-50' : 'z-50'
-            } h-full w-full backface-hidden`}
-          >
+          <div className={`absolute z-50 h-full w-full backface-hidden`}>
             <CurrentWeather meteoData={meteoData} isEmpirical={emperical} />
           </div>
           <div
-            className={`absolute ${
+            className={`absolute h-full w-full rounded-2xl rotate-y-180 backface-hidden ${
               isFlipped ? 'z-50' : ''
-            } h-full w-full rounded-2xl rotate-y-180 backface-hidden`}
+            }`}
           >
             <ForecastWeather meteoData={meteoData} isEmpirical={emperical} />
           </div>
