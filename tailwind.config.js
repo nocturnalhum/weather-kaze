@@ -5,6 +5,9 @@ const Myclass = plugin(function ({ addUtilities }) {
     '.rotate-y-180': {
       transform: 'rotateY(-180deg)',
     },
+    '.rotate-x-180': {
+      transform: 'rotateX(180deg)',
+    },
     '.preserve-3d': {
       transformStyle: 'preserve-3d',
     },
