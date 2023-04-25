@@ -11,9 +11,9 @@ export default function WeeklyToday({ dailyData, isEmpirical }) {
   return (
     <div className='my-2 rounded-lg bg-blue-600/50 p-2 shadow-xl'>
       <h1 className='pb-2 text-3xl font-medium'>Today</h1>
-      <div className='flex max-w-md  justify-between'>
+      <div className='flex max-w-lg justify-between px-3'>
         {/* ==============<<< Temperature >>===================================*/}
-        <div className='flex flex-col'>
+        <div className='flex w-1/3 flex-col items-start'>
           <div className='flex text-4xl font-bold text-amber-400 landscape:text-4xl'>
             <span className=''>{dailyData[0].temp_high}</span>
             <span className='pl-1 text-2xl font-light'>
@@ -24,13 +24,13 @@ export default function WeeklyToday({ dailyData, isEmpirical }) {
             <span className='pr-1 text-sm'>Low</span>
             <span className='text-xl'>{dailyData[0].temp_low}°</span>
           </div>
-          {/* <span className='font-light text-gray-300'>
-              Feels like: {Math.round(dailyData[0].feels_like_max)}°
-              {isEmpirical ? 'F' : 'C'}
-            </span> */}
+          <span className='font-light text-gray-300'>
+            Feels like: {Math.round(dailyData[0].feels_like_max)}°
+            {isEmpirical ? 'F' : 'C'}
+          </span>
         </div>
         {/* ==============<<< Icon & Description >>============================*/}
-        <div className='relative flex flex-col items-center justify-between'>
+        <div className='relative flex w-1/3 flex-col items-start justify-between space-y-2'>
           <span className='text-base font-semibold capitalize'>
             {weatherLabelMapping[dailyData[0].weathercode]}
           </span>
@@ -43,12 +43,10 @@ export default function WeeklyToday({ dailyData, isEmpirical }) {
           />
         </div>
         {/* ==============<<< Preciption & UV Index >>=========================*/}
-        <div className='flex flex-col'>
+        <div className='flex w-1/3 flex-col space-y-1 text-sm'>
           <span className='flex'>
             <FaSun size={16} className='text-amber-400' />
-            <span className='ml-1 text-sm'>
-              UV Index: {dailyData[0].uv_index_max}
-            </span>
+            <span className='ml-1 '>UV Index: {dailyData[0].uv_index_max}</span>
           </span>
 
           <div className='flex items-center'>
@@ -57,11 +55,11 @@ export default function WeeklyToday({ dailyData, isEmpirical }) {
               Prob: {dailyData[0].precipitation_probability_max}%
             </span>
           </div>
-          <div className='flex items-center capitalize'>
+          <div className='flex items-center'>
             <IoWaterSharp size={16} className='text-cyan-400' />
             <span>
               Prec: {dailyData[0].total_precipitation}
-              {isEmpirical ? 'in' : 'mm'}
+              {isEmpirical ? ' in' : ' mm'}
             </span>
           </div>
         </div>

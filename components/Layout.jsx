@@ -1,8 +1,13 @@
 import Head from 'next/head';
 import Search from './Search';
 import Image from 'next/image';
+import { useContext } from 'react';
+import AppContext from '@/contextAPI/AppContext';
 
 export default function Layout({ children, title }) {
+  const value = useContext(AppContext);
+  let { backgroundImage } = value;
+  let newImage = backgroundImage;
   return (
     <>
       <Head>
@@ -11,17 +16,16 @@ export default function Layout({ children, title }) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
 
-      <div
-        className={`relative min-h-screen overflow-auto bg-snow bg-cover bg-center`}
-      >
-        <div className='absolute inset-0 bg-black/40' />
-        {/* <Image
-          src='https://images.unsplash.com/photo-1511884642898-4c92249e20b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80'
-          alt='pacific background'
+      <div className={`relative min-h-screen overflow-auto`}>
+        {/* Overlay */}
+        <div className='absolute inset-0 bg-black/30' />
+        <Image
+          src={newImage ? newImage : '/backgrounds/sakura.jpg'}
+          alt='weather background'
+          priority
           fill
           className='-z-10 object-cover object-center'
-        /> */}
-        {/* Overlay */}
+        />
         <Search />
         <div className='min-h-[calc(100vh-5rem)] overflow-auto text-gray-50'>
           {children}

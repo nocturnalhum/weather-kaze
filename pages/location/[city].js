@@ -18,8 +18,6 @@ const fahrenheitCountries = [
 
 const METEO_QUERY = `hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,surface_pressure,cloudcover,cloudcover_low,visibility,windspeed_10m,winddirection_10m,windgusts_10m,uv_index,is_day&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,precipitation_sum,precipitation_hours,precipitation_probability_max,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant&current_weather=true&forecast_days=16&timezone=auto`;
 
-const METEO_QUERY_FAHRENHEIT = `hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,surface_pressure,cloudcover,cloudcover_low,visibility,windspeed_10m,winddirection_10m,windgusts_10m,uv_index,is_day&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,precipitation_sum,precipitation_hours,precipitation_probability_max,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=auto`;
-
 export default function City({ meteoData, name, country, isEmpirical }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [emperical, setEmperical] = useState(isEmpirical);
@@ -43,7 +41,7 @@ export default function City({ meteoData, name, country, isEmpirical }) {
             onClick={handleFlip}
             className='h-auto w-28 rounded-l-full  border-r-2 border-gray-700 bg-gradient-to-b from-gray-600 to-black px-4 py-2 font-semibold text-gray-300 backdrop-blur-sm'
           >
-            {isFlipped ? 'Currently' : 'Weekly'}
+            {isFlipped ? 'Currently' : 'Forecast'}
           </button>
           <button
             onClick={handleEmpirical}
@@ -102,13 +100,15 @@ export async function getServerSideProps({ params }) {
     };
   }
 
-  const isEmpirical = fahrenheitCountries.includes(country);
-
   // Get Weather METEO API:
   const res = await fetch(
     `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&${METEO_QUERY}`
   );
   const meteoData = await res.json();
+
+  const isEmpirical = fahrenheitCountries.includes(country);
+  const weathercode = meteoData?.current_weather.weathercode;
+  const isDay = meteoData?.current_weather.is_day;
 
   if (!meteoData) {
     return {
@@ -116,6 +116,13 @@ export async function getServerSideProps({ params }) {
     };
   }
   return {
-    props: { meteoData, name, country, isEmpirical },
+    props: {
+      meteoData,
+      name,
+      country,
+      isEmpirical,
+      weathercode: weathercode,
+      isDay: isDay,
+    },
   };
 }

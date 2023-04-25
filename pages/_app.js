@@ -1,14 +1,34 @@
-import Layout from '@/components/Layout';
 import '@/styles/globals.css';
-import Head from 'next/head';
 import Router from 'next/router';
+import Layout from '@/components/Layout';
 import { useEffect, useState } from 'react';
-import { BsSun, BsCloudDrizzleFill } from 'react-icons/bs';
+import { BsSun } from 'react-icons/bs';
 import { IoIosCloud } from 'react-icons/io';
-import { HiCloud } from 'react-icons/hi2';
+import AppContext from '@/contextAPI/AppContext';
+import {
+  weatherBackgroundDay,
+  weatherBackgroundNight,
+} from '@/lib/weatherMapping';
 
 export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
+  const [backgroundImage, setBackgroundImage] = useState();
+
+  const handleBackgroundImage = (image) => {
+    setBackgroundImage(image);
+  };
+  const weathercode = pageProps?.weathercode;
+  const isDay = pageProps?.isDay;
+
+  useEffect(() => {
+    if (weathercode === undefined) {
+      setBackgroundImage('/backgrounds/sakura.jpg');
+    } else if (isDay) {
+      setBackgroundImage(weatherBackgroundDay[weathercode]);
+    } else {
+      setBackgroundImage(weatherBackgroundNight[weathercode]);
+    }
+  }, [weathercode, isDay]);
 
   useEffect(() => {
     const start = () => {
@@ -30,16 +50,23 @@ export default function App({ Component, pageProps }) {
   }, []);
   return (
     <>
-      {loading ? (
-        <Layout title='Loading...'>
-          <div className='relative flex items-center justify-center'>
-            <BsSun className='mt-16 animate-spin-slow text-5xl text-amber-400' />
-            <IoIosCloud className='absolute left-1/2 top-1/3 mt-12 text-5xl text-cyan-200' />
-          </div>
-        </Layout>
-      ) : (
-        <Component {...pageProps} />
-      )}
+      <AppContext.Provider
+        value={{
+          backgroundImage: backgroundImage,
+          setBackgroundImage: setBackgroundImage,
+        }}
+      >
+        {loading ? (
+          <Layout title='Loading...'>
+            <div className='relative flex items-center justify-center'>
+              <BsSun className='mt-16 animate-spin-slow text-5xl text-amber-400' />
+              <IoIosCloud className='absolute left-1/2 top-1/3 mt-12 text-5xl text-cyan-200' />
+            </div>
+          </Layout>
+        ) : (
+          <Component {...pageProps} />
+        )}
+      </AppContext.Provider>
     </>
   );
 }

@@ -1,18 +1,8 @@
-import React, { useRef, useState } from 'react';
-import Image from 'next/image';
-import moment from 'moment';
-import { Virtualizer, useVirtualizer } from '@tanstack/react-virtual';
-import {
-  weatherCodeMapping,
-  weatherIconMappingDay,
-  weatherLabelMapping,
-} from '@/lib/weatherMapping';
-import { IoUmbrellaSharp, IoWaterSharp } from 'react-icons/io5';
-import { FaSun } from 'react-icons/fa';
-import { WiHorizon, WiHorizonAlt } from 'react-icons/wi';
+import React, { useRef } from 'react';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import { celciusToFahrenheit, mmToInches } from '@/lib/metricToEmpirical';
 import ForecastToday from './ForecastToday';
-import ForecastDay from './ForecastDay';
+import ForecastDays from './ForecastDays';
 
 export default function ForecastWeather({ meteoData, isEmpirical }) {
   const listRef = useRef();
@@ -43,7 +33,7 @@ export default function ForecastWeather({ meteoData, isEmpirical }) {
         : Math.round(daily?.temperature_2m_min[i]),
       total_precipitation: isEmpirical
         ? parseFloat(mmToInches(daily?.precipitation_sum[i]).toFixed(2))
-        : daily?.precipitation_sum[i],
+        : Math.round(daily?.precipitation_sum[i]),
     });
   }
 
@@ -88,9 +78,9 @@ export default function ForecastWeather({ meteoData, isEmpirical }) {
                 key={row.index}
                 ref={RowVirtualizer.measureElement}
                 data-index={row.index}
-                className='h-16 w-full max-w-3xl items-center rounded-lg perspective'
+                className='h-20'
               >
-                <ForecastDay
+                <ForecastDays
                   dailyData={dailyData}
                   row={row}
                   isEmpirical={isEmpirical}
