@@ -10,6 +10,7 @@ import {
   weatherBackgroundNight,
 } from '@/lib/weatherMapping';
 
+const images = ['sakura.jpg', 'overcast.jpg', 'daisies.jpg', 'magnolias.jpg'];
 export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState();
@@ -19,16 +20,17 @@ export default function App({ Component, pageProps }) {
   };
   const weathercode = pageProps?.weathercode;
   const isDay = pageProps?.isDay;
+  const rand = Math.floor(Math.random() * images.length);
 
   useEffect(() => {
     if (weathercode === undefined) {
-      setBackgroundImage('/backgrounds/sakura.jpg');
+      setBackgroundImage(`/backgrounds/${images[rand]}`);
     } else if (isDay) {
       setBackgroundImage(weatherBackgroundDay[weathercode]);
     } else {
       setBackgroundImage(weatherBackgroundNight[weathercode]);
     }
-  }, [weathercode, isDay]);
+  }, [weathercode, isDay, rand]);
 
   useEffect(() => {
     const start = () => {

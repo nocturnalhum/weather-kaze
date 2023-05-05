@@ -20,7 +20,7 @@ export default function Layout({ children, title }) {
         {/* Overlay */}
         <div className='absolute inset-0 bg-black/30' />
         <Image
-          src={newImage ? newImage : '/backgrounds/sakura.jpg'}
+          src={newImage ? newImage : '/backgrounds/overcast.jpg'}
           alt='weather background'
           priority
           fill
