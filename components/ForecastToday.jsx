@@ -35,6 +35,7 @@ export default function WeeklyToday({ dailyData, isEmpirical }) {
             {weatherLabelMapping[dailyData[0].weathercode]}
           </span>
           <Image
+            priority
             src={weatherIconMappingDay[dailyData[0].weathercode]}
             alt={weatherLabelMapping[dailyData[0].weathercode]}
             width={60}

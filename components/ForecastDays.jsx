@@ -51,6 +51,7 @@ export default function ForecastDay({ dailyData, row, isEmpirical }) {
             {/* ================<<< Weather Condition >>>================= */}
             <div className='flex h-full w-1/3 flex-col items-center justify-center pr-7'>
               <Image
+                priority
                 src={weatherIconMappingDay[dailyData[row.index].weathercode]}
                 alt={weatherLabelMapping[dailyData[row.index].weathercode]}
                 width={50}

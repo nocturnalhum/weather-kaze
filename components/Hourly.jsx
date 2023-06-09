@@ -72,6 +72,7 @@ export default function Hourly({ hourlyData, sunrise, sunset, isEmpirical }) {
         </div>
         <span className='flex items-center text-xl font-medium'>
           <Image
+            priority
             src={
               isDayTime
                 ? weatherIconMappingDay[hourlyData[index].weathercode]
