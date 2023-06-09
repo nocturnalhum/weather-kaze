@@ -73,7 +73,7 @@ export default function Search() {
             setNotFound(true);
             return;
           }
-          console.log('Results', results);
+          // console.log('Results', results);
           setQueryList(results);
         }
       }
