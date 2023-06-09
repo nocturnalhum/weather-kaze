@@ -23,8 +23,10 @@ export default function Layout({ children, title }) {
           src={newImage ? newImage : '/backgrounds/overcast.jpg'}
           alt='weather background'
           priority
-          fill
-          className='-z-10 object-cover object-center'
+          height={1440}
+          width={2180}
+          // fill
+          className='absolute -z-10 h-full w-full object-cover object-center'
         />
         <Search />
         <div className='min-h-[calc(100vh-5rem)] overflow-auto text-gray-50'>
