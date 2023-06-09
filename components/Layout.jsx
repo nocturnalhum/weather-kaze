@@ -20,12 +20,12 @@ export default function Layout({ children, title }) {
         {/* Overlay */}
         <div className='absolute inset-0 bg-black/30' />
         <Image
-          src={newImage ? newImage : '/backgrounds/overcast.jpg'}
+          // src={newImage ? newImage : '/backgrounds/overcast.jpg'}
+          src={newImage ? newImage : '/backgrounds/defaultBG.svg'}
           alt='weather background'
           priority
           height={1440}
           width={2180}
-          // fill
           className='absolute -z-10 h-full w-full object-cover object-center'
         />
         <Search />
