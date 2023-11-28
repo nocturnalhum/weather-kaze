@@ -10,13 +10,7 @@ import {
   weatherBackgroundNight,
 } from '@/lib/weatherMapping';
 
-const images = [
-  'sakura.jpg',
-  'overcast.jpg',
-  'daisies.jpg',
-  'magnolias.jpg',
-  'mountains.jpg',
-];
+const images = ['sakura.jpg', 'overcast.jpg', 'daisies.jpg'];
 export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState();

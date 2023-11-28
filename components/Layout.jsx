@@ -19,15 +19,18 @@ export default function Layout({ children, title }) {
       <div className={`relative min-h-screen overflow-auto`}>
         {/* Overlay */}
         <div className='absolute inset-0 bg-black/30' />
-        <Image
-          // src={newImage ? newImage : '/backgrounds/overcast.jpg'}
-          src={newImage ? newImage : '/backgrounds/defaultBG.svg'}
-          alt='weather background'
-          priority
-          height={1440}
-          width={2180}
-          className='absolute -z-10 h-full w-full object-cover object-center'
-        />
+        {newImage && (
+          <Image
+            priority
+            src={newImage ? newImage : '/backgrounds/overcast.jpg'}
+            // src={newImage ? newImage : '/backgrounds/defaultBG.svg'}
+            alt='weather background'
+            height={1028}
+            width={1440}
+            className='absolute -z-10 h-full w-full object-cover object-center'
+          />
+        )}
+        <div className='absolute -z-20 h-full w-full bg-black' />
         <Search />
         <div className='min-h-[calc(100vh-5rem)] overflow-auto text-gray-50'>
           {children}
